@@ -2,7 +2,7 @@
     require_once('koneksi.php');
 
     $sql = "SELECT * FROM developers";
-    $result = $koneksi->query($sql);
+    $developers = $koneksi->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -20,27 +20,57 @@
 
     <div class="container py-5">
         <div class="row">
-            <div class="col-lg-6 mx-auto">
+            <div class="col-lg-10 mx-auto">
                 <div class="card">
                     <div class="card-body">
 
 
                     <!-- table start -->
-                    <table class="table table-bordered">
+                    <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
-                                <th>no</th>
+                                <th>No</th>
                                 <th>First Name</th>
                                 <th>Last Name</th>
+                                <th>Created At</th>
+                                <th>Updated At</th>
                             </tr>
                         </thead>
                         <tbody>
 
-                            <tr>
-                                <td>1</td>
-                                <td>Janzen</td>
-                                <td>Faidiban</td>
-                            </tr>
+                            <?php 
+                                $no = 1;
+                                if((mysqli_num_rows($developers) > 0))
+                                {
+                                    while($developer = mysqli_fetch_assoc($developers))
+                                    {
+                                        echo "
+                                            <tr>
+                                                <td>
+                                                    " . $no++ . "
+                                                </td>
+                                                <td>
+                                                    " . $developer['first_name'] . "
+                                                </td>
+                                                <td>
+                                                    " . $developer['last_name'] . "
+                                                </td>
+                                                <td>
+                                                    " . $developer['job_desc'] . "
+                                                </td>
+                                                <td>
+                                                    " . $developer['created_at'] . "
+                                                </td>
+                                                <td>
+                                                    " . $developer['updated_at'] . "
+                                                </td>
+                                            </tr>
+                                        ";
+                                    }
+                                } else {
+                                    echo "no data!";
+                                }
+                            ?>
 
                         </tbody>
                     </table>
