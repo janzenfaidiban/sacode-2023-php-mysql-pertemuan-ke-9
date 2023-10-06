@@ -20,70 +20,76 @@
 
     <div class="container py-5">
         <div class="row">
-            <div class="col-lg-10 mx-auto">
+            <div class="col-12 mx-auto">
                 <div class="card rounded-0">
+
                     <div class="card-header">
                         <h1>Data Developers at Nokensoft</h1>
                         <a href="" class="btn btn-primary rounded-0">
                             Add Developer
                         </a>
                     </div>
+                    <!-- .card header end -->
+
                     <div class="card-body">
+                        <!-- table start -->
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Created At</th>
+                                    <th>Updated At</th>
+                                    <th>Options</th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-
-                    <!-- table start -->
-                    <table class="table table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Created At</th>
-                                <th>Updated At</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            <?php 
-                                $no = 1;
-                                if((mysqli_num_rows($developers) > 0))
-                                {
-                                    while($developer = mysqli_fetch_assoc($developers))
+                                <?php 
+                                    $no = 1;
+                                    if((mysqli_num_rows($developers) > 0))
                                     {
-                                        echo "
-                                            <tr>
-                                                <td>
-                                                    " . $no++ . "
-                                                </td>
-                                                <td>
-                                                    " . $developer['first_name'] . "
-                                                </td>
-                                                <td>
-                                                    " . $developer['last_name'] . "
-                                                </td>
-                                                <td>
-                                                    " . $developer['job_desc'] . "
-                                                </td>
-                                                <td>
-                                                    " . $developer['created_at'] . "
-                                                </td>
-                                                <td>
-                                                    " . $developer['updated_at'] . "
-                                                </td>
-                                            </tr>
-                                        ";
+                                        while($developer = mysqli_fetch_assoc($developers))
+                                        {
+                                            echo "
+                                                <tr>
+                                                    <td>
+                                                        " . $no++ . "
+                                                    </td>
+                                                    <td>
+                                                        " . $developer['first_name'] . "
+                                                    </td>
+                                                    <td>
+                                                        " . $developer['last_name'] . "
+                                                    </td>
+                                                    <td>
+                                                        " . $developer['job_desc'] . "
+                                                    </td>
+                                                    <td>
+                                                        " . $developer['created_at'] . "
+                                                    </td>
+                                                    <td>
+                                                        " . $developer['updated_at'] . "
+                                                    </td>
+                                                    <td class='d-flex gap-1'>
+                                                        <a href='#' class='btn btn-sm btn-primary rounded-0'>View</a>
+                                                        <a href='#' class='btn btn-sm btn-outline-primary rounded-0'>Edit</a>
+                                                        <a href='#' class='btn btn-sm btn-outline-danger rounded-0'>Delete</a>
+                                                    </td>
+                                                </tr>
+                                            ";
+                                        }
+                                    } else {
+                                        echo "no data!";
                                     }
-                                } else {
-                                    echo "no data!";
-                                }
-                            ?>
+                                ?>
 
-                        </tbody>
-                    </table>
-                    <!-- table end -->
-
-
+                            </tbody>
+                        </table>
+                        <!-- table end -->
                     </div>
+                    <!-- .card body end -->
                 </div>
             </div>
         </div>
