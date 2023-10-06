@@ -1,3 +1,10 @@
+<?php
+    require_once('koneksi.php');
+
+    $sql = "SELECT * FROM developers";
+    $result = $koneksi->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,11 +35,13 @@
                             </tr>
                         </thead>
                         <tbody>
+
                             <tr>
                                 <td>1</td>
                                 <td>Janzen</td>
                                 <td>Faidiban</td>
                             </tr>
+
                         </tbody>
                     </table>
                     <!-- table end -->
